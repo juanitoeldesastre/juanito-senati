@@ -22,7 +22,7 @@ class Calculadora {
     }
 
     public function dividir() {
-        // Verifica si el divisor es 0 para evitar una división por cero
+        
         if ($this->segundoNumero != 0) {
             return $this->primerNumero / $this->segundoNumero;
         } else {
@@ -35,7 +35,6 @@ class Calculadora {
     }
 }
 
-// Ejemplo de uso
 $miCalculadora = new Calculadora(5, 2);
 echo "Suma: " . $miCalculadora->sumar() . "<br>";
 echo "Resta: " . $miCalculadora->restar() . "<br>";
