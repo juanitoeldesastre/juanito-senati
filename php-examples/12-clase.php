@@ -35,7 +35,7 @@ class Calculadora {
     }
 }
 
-$miCalculadora = new Calculadora(5, 2);
+$miCalculadora = new Calculadora(1, 2);
 echo "Suma: " . $miCalculadora->sumar() . "<br>";
 echo "Resta: " . $miCalculadora->restar() . "<br>";
 echo "Multiplicación: " . $miCalculadora->multiplicar() . "<br>";
