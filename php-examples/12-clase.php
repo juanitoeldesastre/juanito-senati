@@ -5,6 +5,8 @@ class Calculadora {
     public $segundoNumero;
 
     public function __construct($num1 = 0, $num2 = 0) {
+        echo $num1, "\n";
+        echo $num2, "\n";
         $this->primerNumero = $num1;
         $this->segundoNumero = $num2;
     }
@@ -32,6 +34,10 @@ class Calculadora {
 
     public function potencia() {
         return pow($this->primerNumero, $this->segundoNumero);
+    }
+
+    public function raiz() {
+        return sqrt($this->primerNumero);
     }
 }
 
