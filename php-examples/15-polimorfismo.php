@@ -14,8 +14,9 @@
     }
 
     public function calcularArea() {
-      $area = ($this->base * $this->altura) / 2
+      $area = ($this->base * $this->altura) / 2;
       return $area;
+
     }
   }
 
