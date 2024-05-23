@@ -1,5 +1,4 @@
 <?php
-
 $numero1 = 10;
 $numero2 = 20;
 
@@ -12,5 +11,4 @@ echo "La suma es " . $suma . "<br>";
 echo "La resta es " . $resta . "<br>";
 echo "La multiplicación es " . $multiplicacion . "<br>";
 echo "La división es " . $division . "<br>";
-
 ?>
