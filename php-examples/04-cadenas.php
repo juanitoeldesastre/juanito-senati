@@ -1,4 +1,5 @@
 <?php
+
     $cadena="El curso ha terminado";
     echo "<h1>";
     echo "El texto en mayuscula ".strtoupper($cadena)."<br>";
