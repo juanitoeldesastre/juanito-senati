@@ -23,7 +23,7 @@ class Animal {
     }
 
     public function hacerSonido() {
-        $audiofile="D:\\ESTUDIOS\\SENATI\\Ingenieria de Software\\Tercer_semestre\\BACKEND DEVELOPER WEB\\juanito\\php-examples\\".$this->archivoSonido;
+        $audiofile="c:\\xampp\\htdocs\\juanito\\php-examples\\".$this->archivoSonido;
         shell_exec("start wmplayer ".escapeshellarg($audiofile));
     }
 }
