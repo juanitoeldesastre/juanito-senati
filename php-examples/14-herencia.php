@@ -35,6 +35,4 @@ class Perro extends Animal {
     }
 }
 
-
-
 ?>
