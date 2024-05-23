@@ -59,3 +59,5 @@ class Circulo implements Figura {
         return $area;
     }
 }
+
+?>
