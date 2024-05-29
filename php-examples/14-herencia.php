@@ -35,4 +35,11 @@ class Perro extends Animal {
     }
 }
 
+class Gato extends Animal {
+    public function hacerSonido($sonido="") {
+        parent::hacerSonido();
+        return $sonido;
+    }
+}
+
 ?>
