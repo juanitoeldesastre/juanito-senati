@@ -62,4 +62,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->execute();
         $paciente = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($paciente)
+        if ($paciente) {
+            echo "Paciente registrado correctamente:<br>";
+            echo "Nombre: " . $paciente['nombres'] . " " . $paciente['apellidos'] . "<br>";
+            echo "Edad: " . $paciente['edad'] . "<br>";
+            // Agrega más campos según tus necesidades
+        } else {
+            echo "Error al obtener los datos del paciente.";
+        }
+
+        $conn->commit();
+    } catch (Exception $e) {
+        $conn->rollBack();
+        echo "Error: " . $e->getMessage();
+    }
+}
+?>
