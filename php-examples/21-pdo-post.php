@@ -55,10 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $conn->exec($sql);
 
-        // Obtener el ID del último paciente insertado
         $lastId = $conn->lastInsertId();
-
-        // Obtener todos los datos del último paciente
         $stmt = $conn->prepare("SELECT * FROM `pacientes` WHERE id = :id");
         $stmt->bindParam(':id', $lastId);
         $stmt->execute();
