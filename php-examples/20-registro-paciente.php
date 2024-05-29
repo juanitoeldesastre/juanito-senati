@@ -5,24 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Registro de Paciente</title>
     <style>
-        .Botones {
-            margin-top: 20px;
-        }
-        .Botones button {
-            margin-right: 10px;
-        }
-        label {
-            display: block;
-            margin-top: 10px;
-        }
-        input[type="text"], input[type="date"] {
-            width: 100%;
-            padding: 8px;
-            margin-top: 5px;
-        }
-        .sintomas {
-            margin-top: 20px;
-        }
     </style>
     <script>
         function validateForm() {
