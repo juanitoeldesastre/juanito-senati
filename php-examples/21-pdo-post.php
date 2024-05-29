@@ -54,9 +54,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             '$gripe', '$Presion_alta', '$Fatiga', '$Garraspera', '$fecha', '$resultado')";
 
         $conn->exec($sql);
-        $lastId = $conn->lastInsertId(); // Obtener el ID del último paciente insertado
 
-        // Mostrar los datos del paciente en un SELECT
+        // Obtener el ID del último paciente insertado
+        $lastId = $conn->lastInsertId();
+
+        // Obtener todos los datos del último paciente
         $stmt = $conn->prepare("SELECT * FROM `pacientes` WHERE id = :id");
         $stmt->bindParam(':id', $lastId);
         $stmt->execute();
@@ -64,9 +66,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($paciente) {
             echo "Paciente registrado correctamente:<br>";
-            echo "Nombre: " . $paciente['nombres'] . " " . $paciente['apellidos'] . "<br>";
-            echo "Edad: " . $paciente['edad'] . "<br>";
-            // Agrega más campos según tus necesidades
+            foreach ($paciente as $key => $value) {
+                echo "$key: $value<br>";
+            }
         } else {
             echo "Error al obtener los datos del paciente.";
         }
