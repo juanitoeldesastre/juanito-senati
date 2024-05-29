@@ -54,22 +54,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             '$gripe', '$Presion_alta', '$Fatiga', '$Garraspera', '$fecha', '$resultado')";
 
         $conn->exec($sql);
-        $conn->commit();
-        echo "Fue registrado correctamente.<br>";
+        $lastId = $conn->lastInsertId(); // Obtener el ID del último paciente insertado
 
-        // Obtener el último registro insertado
-        $lastId = $conn->lastInsertId();
-        $stmt = $conn->query("SELECT * FROM pacientes WHERE id = $lastId");
+        // Mostrar los datos del paciente en un SELECT
+        $stmt = $conn->prepare("SELECT * FROM `pacientes` WHERE id = :id");
+        $stmt->bindParam(':id', $lastId);
+        $stmt->execute();
         $paciente = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($paciente) {
-            echo "<select>";
-            echo "<option value='{$paciente['id']}'>{$paciente['nombres']} {$paciente['apellidos']}, EDAD: {$paciente['edad']}</option>";
-            echo "</select>";
-        }
-    } catch (Exception $e) {
-        $conn->rollBack();
-        echo "Error: " . $e->getMessage();
-    }
-}
-?>
+        if ($paciente)
