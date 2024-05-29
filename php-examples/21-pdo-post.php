@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($edad <= 0 || $edad >= 100) {
         echo '<script>alert("Ingrese una edad mayor a 0 y menor que 100.");</script>';
-        exit; // Detener la ejecución del script si la edad no está en el rango permitido
+        exit; 
     }
 
     $tos = array_key_exists("tos",$_POST) ? $_POST['tos'] : "0";

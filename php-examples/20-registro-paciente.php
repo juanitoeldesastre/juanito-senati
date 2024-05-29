@@ -42,6 +42,18 @@
             <button type="submit">Guardar</button>
             <button>Cancelar</button>
         </div>
-    </form>    
+    </form> 
+    
+    <script>
+        function validarEdad() {
+            var edad = document.getElementById("edad").value;
+            if (edad <= 0 || edad >= 100) {
+                alert("Ingrese una edad mayor a 0 y menor que 100.");
+                return false; // Evitar que el formulario se envíe
+            }
+            return true; // Permitir el envío del formulario
+        }
+    </script>
+    
 </body>
 </html>
