@@ -15,21 +15,21 @@
         table {
             width: 80%;
             border-collapse: collapse;
-            margin: 0 auto; /* Centramos la tabla */
+            margin: 0 auto; 
         }
         table, th, td {
             border: 1px solid black;
         }
         th, td {
-            padding: 5px; /* Reducimos el padding para hacer la tabla más compacta */
+            padding: 5px; 
             text-align: left;
         }
     </style>
 </head>
 <body>
-
-<h1 style="text-align: center;">Buscar Pacientes</h1> <!-- Centramos el título -->
-
+ 
+<h1 style="text-align: center;">Buscar Pacientes</h1> 
+ 
 <form method="POST">
     <table>
         <tr>
@@ -37,51 +37,44 @@
             <td><input type="text" id="nombre" name="nombre"></td>
         </tr>
         <tr>
-            <td><label for="tos">Tos:</label></td>
-            <td><input type="checkbox" id="tos" name="tos" value="1"></td>
+            <td colspan="2"><label for="tos">Tos:</label><input type="checkbox" id="tos" name="tos" value="1"></td>
         </tr>
         <tr>
-            <td><label for="fiebre">Fiebre:</label></td>
-            <td><input type="checkbox" id="fiebre" name="fiebre" value="1"></td>
+            <td colspan="2"><label for="fiebre">Fiebre:</label><input type="checkbox" id="fiebre" name="fiebre" value="1"></td>
         </tr>
         <tr>
-            <td><label for="disnea">Disnea:</label></td>
-            <td><input type="checkbox" id="disnea" name="disnea" value="1"></td>
+            <td colspan="2"><label for="disnea">Disnea:</label><input type="checkbox" id="disnea" name="disnea" value="1"></td>
         </tr>
         <tr>
-            <td><label for="dolor_muscular">Dolor Muscular:</label></td>
-            <td><input type="checkbox" id="dolor_muscular" name="dolor_muscular" value="1"></td>
+            <td colspan="2"><label for="dolor_muscular">Dolor Muscular:</label><input type="checkbox" id="dolor_muscular" name="dolor_muscular" value="1"></td>
         </tr>
         <tr>
-            <td><label for="gripe">Gripe:</label></td>
-            <td><input type="checkbox" id="gripe" name="gripe" value="1"></td>
+            <td colspan="2"><label for="gripe">Gripe:</label><input type="checkbox" id="gripe" name="gripe" value="1"></td>
         </tr>
         <tr>
-            <td><label for="presion_alta">Presión Alta:</label></td>
-            <td><input type="checkbox" id="presion_alta" name="presion_alta" value="1"></td>
+            <td colspan="2"><label for="presion_alta">Presión Alta:</label><input type="checkbox" id="presion_alta" name="presion_alta" value="1"></td>
         </tr>
         <tr>
-            <td><label for="fatiga">Fatiga:</label></td>
-            <td><input type="checkbox" id="fatiga" name="fatiga" value="1"></td>
+            <td colspan="2"><label for="fatiga">Fatiga:</label><input type="checkbox" id="fatiga" name="fatiga" value="1"></td>
         </tr>
         <tr>
-            <td><label for="garraspera">Garraspera:</label></td>
-            <td><input type="checkbox" id="garraspera" name="garraspera" value="1"></td>
+            <td colspan="2"><label for="garraspera">Garraspera:</label><input type="checkbox" id="garraspera" name="garraspera" value="1"></td>
         </tr>
     </table>
     <button type="submit">Buscar</button>
 </form>
-
+ 
+ 
 <?php
 $servername = "localhost";
 $username = "root";
 $password = "root";
 $dbname = "covid";
-
+ 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
+ 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $nombre = isset($_POST['nombre']) ? $_POST['nombre'] : '';
         $tos = isset($_POST['tos']) ? 1 : 0;
@@ -92,7 +85,7 @@ try {
         $presion_alta = isset($_POST['presion_alta']) ? 1 : 0;
         $fatiga = isset($_POST['fatiga']) ? 1 : 0;
         $garraspera = isset($_POST['garraspera']) ? 1 : 0;
-
+ 
         $query = "SELECT * FROM pacientes WHERE 1=1";
         $params = [];
         if (!empty($nombre)) {
@@ -131,16 +124,16 @@ try {
             $query .= " AND sintoma_garraspera = :garraspera";
             $params[':garraspera'] = $garraspera;
         }
-
+ 
         $stmt = $conn->prepare($query);
-
+ 
         foreach ($params as $key => $value) {
             $stmt->bindValue($key, $value);
         }
-
+ 
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
+ 
         if ($result) {
             echo "<table>";
             echo "<tr>
@@ -159,6 +152,8 @@ try {
                     <th>Fatiga</th>
                     <th>Garraspera</th>
                     <th>Última Fecha de Vacunación</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
                   </tr>";
             foreach ($result as $row) {
                 echo "<tr>";
@@ -168,16 +163,17 @@ try {
                 echo "<td>{$row['edad']}</td>";
                 echo "<td>{$row['talla_m']}</td>";
                 echo "<td>{$row['peso_kg']}</td>";
-                echo "<td>" . ($row['sintoma_tos'] ? 'Sí' : 'No') . "</td>";
-                echo "<td>" . ($row['sintoma_fiebre'] ? 'Sí' : 'No') . "</td>";
-                echo "<td>" . ($row['sintoma_disnea'] ? 'Sí' : 'No') . "</td>";
-                echo "<td>" . ($row['sintoma_dolormuscular'] ? 'Sí' : 'No') . "</td>";
-                echo "<td>" . ($row['sintoma_gripe'] ? 'Sí' : 'No') . "</td>";
-                echo "<td>" . ($row['sintoma_presionalta'] ? 'Sí' : 'No') . "</td>";
-                echo "<td>" . ($row['sintoma_fatiga'] ? 'Sí' : 'No') . "</td>";
-                echo "<td>" . ($row['sintoma_garraspera'] ? 'Sí' : 'No') . "</td>";
+                echo "<td>" . ($row['sintoma_tos'] ? '<span style="color:green;">&#10003;</span>' : '<span style="color:red;">&#10007;</span>') . "</td>";
+                echo "<td>" . ($row['sintoma_fiebre'] ? '<span style="color:green;">&#10003;</span>' : '<span style="color:red;">&#10007;</span>') . "</td>";
+                echo "<td>" . ($row['sintoma_disnea'] ? '<span style="color:green;">&#10003;</span>' : '<span style="color:red;">&#10007;</span>') . "</td>";
+                echo "<td>" . ($row['sintoma_dolormuscular'] ? '<span style="color:green;">&#10003;</span>' : '<span style="color:red;">&#10007;</span>') . "</td>";
+                echo "<td>" . ($row['sintoma_gripe'] ? '<span style="color:green;">&#10003;</span>' : '<span style="color:red;">&#10007;</span>') . "</td>";
+                echo "<td>" . ($row['sintoma_presionalta'] ? '<span style="color:green;">&#10003;</span>' : '<span style="color:red;">&#10007;</span>') . "</td>";
+                echo "<td>" . ($row['sintoma_fatiga'] ? '<span style="color:green;">&#10003;</span>' : '<span style="color:red;">&#10007;</span>') . "</td>";
+                echo "<td>" . ($row['sintoma_garraspera'] ? '<span style="color:green;">&#10003;</span>' : '<span style="color:red;">&#10007;</span>') . "</td>";
                 echo "<td>{$row['ultima_fecha_vacunacion']}</td>";
-                echo "<td><a href='editar-paciente.php?id={$row['id']}'>Editar</a> | <a href='eliminar-paciente.php?id={$row['id']}'>Eliminar</a></td>";
+                echo "<td><a href='23-edicion-pdo.php?id={$row['id']}'>Editar</a></td>"; 
+                echo "<td><a href='24-eliminación-pdo.php?id={$row['id']}'>Eliminar</a></td>"; 
                 echo "</tr>";
             }
             echo "</table>";
@@ -189,6 +185,6 @@ try {
     echo "Error: " . $e->getMessage();
 }
 ?>
-
+ 
 </body>
-</html>
+</html> 
