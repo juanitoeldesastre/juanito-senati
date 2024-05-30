@@ -69,7 +69,8 @@
         } else {
             echo "No se especificó el ID del paciente a editar.";
         }
-    } catch (PDOException $e) {    echo "Error: " . $e->getMessage();
+    } catch (PDOException $e) {   
+         echo "Error: " . $e->getMessage();
     }
     ?>
     </body>
