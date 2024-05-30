@@ -173,7 +173,7 @@ try {
                 echo "<td>" . ($row['sintoma_garraspera'] ? '<span style="color:green;">&#10003;</span>' : '<span style="color:red;">&#10007;</span>') . "</td>";
                 echo "<td>{$row['ultima_fecha_vacunacion']}</td>";
                 echo "<td><a href='23-edicion-pdo.php?id={$row['id']}'>Editar</a></td>"; 
-                echo "<td><a href='24-eliminación-pdo.php?id={$row['id']}'>Eliminar</a></td>"; 
+                echo "<td><a href='24-eliminacion-pdo.php?id={$row['id']}'>Eliminar</a></td>"; 
                 echo "</tr>";
             }
             echo "</table>";

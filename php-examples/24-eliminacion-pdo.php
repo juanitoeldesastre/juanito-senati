@@ -14,9 +14,9 @@ try {
         $stmt->bindParam(':id', $id);
         $stmt->execute();
 
-        echo "<script>alert('Se eliminó el paciente correctamente');</script>";
+        echo "<script>alert('Se eliminó el paciente correctamente'); window.location.href = '22-lista-pdo.php';</script>";
     } else {
-        echo "<script>alert('No se especificó el ID del paciente a eliminar');</script>";
+        echo "<script>alert('No se encontró el ID del paciente a eliminar');</script>";
     }
 } catch (PDOException $e) {
     echo "<script>alert('Error al eliminar el paciente');</script>";
