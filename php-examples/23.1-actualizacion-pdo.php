@@ -25,14 +25,12 @@ try {
         $garraspera = isset($_POST['garraspera']) ? 1 : 0;
         $fecha = $_POST['fecha'];
 
-        // Consulta para obtener los datos originales del paciente
         $query_anterior = "SELECT * FROM pacientes WHERE id=:id";
         $stmt_anterior = $conn->prepare($query_anterior);
         $stmt_anterior->bindParam(':id', $id);
         $stmt_anterior->execute();
         $paciente_anterior = $stmt_anterior->fetch(PDO::FETCH_ASSOC);
 
-        // Actualizar los datos del paciente
         $query = "UPDATE pacientes SET nombres=:nombre, apellidos=:apellido, edad=:edad, talla_m=:talla, peso_kg=:peso, sintoma_tos=:tos, sintoma_fiebre=:fiebre, sintoma_disnea=:disnea, sintoma_dolormuscular=:dolor_muscular, sintoma_gripe=:gripe, sintoma_presionalta=:presion_alta, sintoma_fatiga=:fatiga, sintoma_garraspera=:garraspera, ultima_fecha_vacunacion=:fecha WHERE id=:id";
         $stmt = $conn->prepare($query);
 
@@ -54,7 +52,6 @@ try {
 
         $stmt->execute();
 
-        // Consulta para obtener los datos actualizados del paciente
         $query_actualizado = "SELECT * FROM pacientes WHERE id=:id";
         $stmt_actualizado = $conn->prepare($query_actualizado);
         $stmt_actualizado->bindParam(':id', $id);
@@ -68,7 +65,6 @@ try {
 
         echo "<h2>Datos Actualizados:</h2>";
         echo "<pre>";
-        // Comparar los datos anteriores con los actualizados y resaltar en verde solo los campos que han cambiado
         foreach ($paciente_actualizado as $key => $value) {
             if ($paciente_anterior[$key] !== $value) {
                 echo "<span style='color: green;'>$key: $value</span><br>";
