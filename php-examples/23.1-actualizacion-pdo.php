@@ -68,7 +68,14 @@ try {
 
         echo "<h2>Datos Actualizados:</h2>";
         echo "<pre>";
-        print_r($paciente_actualizado);
+        // Comparar los datos anteriores con los actualizados y resaltar en verde solo los campos que han cambiado
+        foreach ($paciente_actualizado as $key => $value) {
+            if ($paciente_anterior[$key] !== $value) {
+                echo "<span style='color: green;'>$key: $value</span><br>";
+            } else {
+                echo "$key: $value<br>";
+            }
+        }
         echo "</pre>";
 
         echo "<script>alert('Datos actualizados con éxito');</script>";
