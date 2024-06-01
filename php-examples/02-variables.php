@@ -1,9 +1,10 @@
 <?php
-$nombres = "juan piero";
-$apellidos = "vincha loza";
-$curso = "BACKEND DEVELOPER WEB";
-$semestre = "3";
 
+$nombres ="JUAN PIERO";
+$apellidos="VINCHA LOZA";
+$curso="BACKEND DEVELOPER WEB";
+$semestre="TERCER SEMESTRE";
+//juntar nombres apellidos curso y semestre
+echo $nombres." ".$apellidos." ".$curso." ".$semestre;
 
-echo $nombres . " " . $apellidos . " " . $curso . " " . $semestre;
 ?>
