@@ -1,5 +1,5 @@
 <title>variables</title>
-<link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/3/31/Webysther_20160423_-_Elephpant.svg" type="image/x-icon">
+<link rel="icon" href="D:\ESTUDIOS\SENATI\SOFTWARE\TERCER_SEMESTRE\BACKEND\juanito-senati\php-examples" type="image/x-icon">
 
 <?php
 
