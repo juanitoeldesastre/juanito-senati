@@ -1,4 +1,7 @@
+<title>operaciones</title>
+
 <?php
+
     $numero1=10;
     $numero2=20;
 
@@ -11,4 +14,5 @@
     echo "La resta es ".$resta."<br>";
     echo "La multiplicacion es ".$multiplicacion."<br>";
     echo "La division es ".$division."<br></h1>";
+
 ?>
