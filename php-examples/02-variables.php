@@ -1,5 +1,5 @@
 <title>variables</title>
-<link rel="icon" href="D:\ESTUDIOS\SENATI\SOFTWARE\TERCER_SEMESTRE\BACKEND\juanito-senati\php-examples" type="image/x-icon">
+<link rel="icon" href="php.png" type="image/x-icon">
 
 <?php
 
