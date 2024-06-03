@@ -31,5 +31,4 @@ $saldo = 0;
         echo "\nTiene saldo";
     }
 
-
 ?>

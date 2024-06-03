@@ -1,8 +1,9 @@
 <?php  
+
     $contador=1;
     $sumanotas=0;
     while($contador<=3) {        
-        echo "Ingrese su Notas : ";
+        echo "Ingrese su Nota : ";
         $nota =  fgets(STDIN);
         $sumanotas = $sumanotas + $nota;
         $contador++;//$contador=$contador+1
@@ -21,4 +22,5 @@
     }
 
     echo "El numero mayor es :".$mayor;
+    
 ?>

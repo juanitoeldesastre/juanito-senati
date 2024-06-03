@@ -1,31 +1,44 @@
-<title>condiciones</title>
-<link rel="icon" href="https://www.php.net/images/meta-image.png" type="image/x-icon">
-
 <?php
+
     echo "Ingrese su edad: ";
-    $edadEstudiante1= fgets(STDIN);
-    $edadEstudiante2= 21;
+    $edadEstudiante1 = trim(fgets(STDIN));
+    $edadEstudiante1 = (int)$edadEstudiante1; 
+    $edadEstudiante2 = 21;
 
     if($edadEstudiante1 > $edadEstudiante2) {
-        echo "El estudiante N° 01 es mayor que el estudiante N° 02";
+        echo "El estudiante N° 01 es mayor que el estudiante N° 02\n";
     }
     elseif($edadEstudiante1 == $edadEstudiante2) {
-        echo "El estudiante N° 01 tiene la misma edad que el estudiante N° 02";
+        echo "El estudiante N° 01 tiene la misma edad que el estudiante N° 02\n";
     }
     else {
-        echo "El estudiante N° 02 es mayor que el estudiante N° 01";
+        echo "El estudiante N° 02 es mayor que el estudiante N° 01\n";
     }
 
-    echo "\n";
-    echo "Ingrese su Nota Final: ";
-    $notafinal = fgets(STDIN);
-    if($notafinal <=10.5) {
-        echo "Usted esta aprobado a las ajustas";
+    $notaValida = false;
+    while (!$notaValida) {
+        echo "Ingrese su Nota Final: ";
+        $notafinal = trim(fgets(STDIN));
+
+        if (is_numeric($notafinal)) {
+            $notafinal = (float)$notafinal; 
+            $notaValida = true;
+        } else {
+            echo "Por favor, ingrese un número válido.\n";
+        }
     }
-    elseif(10.5 < $notafinal && $notafinal <= 15) {
-        echo "Usted esta aprobado de forma regular";
+
+    if($notafinal < 10.5) {
+        echo "Usted está desaprobado\n";
+    }
+    elseif($notafinal == 10.5) {
+        echo "Usted está aprobado a las justas\n";
+    }
+    elseif($notafinal > 10.5 && $notafinal <= 15) {
+        echo "Usted está aprobado de forma regular\n";
     }
     else {
-        echo "Usted muy bien aprobado";
+        echo "Usted está muy bien aprobado\n";
     }
+    
 ?>
