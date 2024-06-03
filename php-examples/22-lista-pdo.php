@@ -75,8 +75,8 @@ try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
  
-    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['nombre'])) {
-        $nombre = $_POST['nombre'];
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $nombre = isset($_POST['nombre']) ? $_POST['nombre'] : '';
         $tos = isset($_POST['tos']) ? 1 : 0;
         $fiebre = isset($_POST['fiebre']) ? 1 : 0;
         $disnea = isset($_POST['disnea']) ? 1 : 0;
@@ -187,4 +187,4 @@ try {
 ?>
  
 </body>
-</html> 
+</html>
