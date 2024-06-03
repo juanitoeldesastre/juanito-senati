@@ -1,3 +1,6 @@
+<title>condiciones</title>
+<link rel="icon" href="https://www.php.net/images/meta-image.png" type="image/x-icon">
+
 <?php
     echo "Ingrese su edad: ";
     $edadEstudiante1= fgets(STDIN);
