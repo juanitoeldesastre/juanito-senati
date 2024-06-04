@@ -6,7 +6,7 @@ function buscarPacientes() {
     };
 
     $.ajax({
-        url :"25-ajax-pdo.php",
+        url :"26-ajax-pdo.php",
         type : "post",
         data: datos,
         success : function(result) {
