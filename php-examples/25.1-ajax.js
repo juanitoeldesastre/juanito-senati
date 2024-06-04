@@ -1,4 +1,4 @@
 function buscarPacientes() {
-    alert("Buscando...")
-    return
+    alert("Buscando...");
+    return;
 }
