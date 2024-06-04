@@ -23,7 +23,9 @@
             <td>Acciones</td>         
         </tr>
     </table>
-    <!-- </gorm> -->
-    <script src="25.1-ajax.js"> </script>
+    <!-- </form> -->
+    <script type="text/javascript"
+    src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="25.1-ajax.js"></script>
 </body>
 </html>
