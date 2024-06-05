@@ -24,16 +24,21 @@ function buscarPacientes() {
 }
 
 function agregarFilas(id,paciente) {
-    const html =
+    const html=
     "<tr>"+
     "<td>"+paciente.nombres+"</td>"+
-    "<td>"+paciente.edad+"</td>"+
+    "<td>"+paciente.edad+"</td>"+    
     "<td>"+paciente.talla_m+"</td>"+
     "<td>"+paciente.peso_kg+"</td>"+
     "<td>"+paciente.sintoma_tos+"</td>"+
     "<td>"+paciente.sintoma_fiebre+"</td>"+
     "<td>"+paciente.sintoma_disnea+"</td>"+
-    "<td><button type='button'>Editar</button></td>" +
+    "<td><button type='button' onclick=editar('"+paciente.nombres+"','"+paciente.edad+"');>Editar</button></td>"+
     "</tr>";
-    $(id + " tr:last").after(html);
+    $(id+" tr:last").after(html);
+}
+ 
+function editar(nombres,edad) {
+    $('#exampleModal').modal('show');    
+    $("#nombre2").val(nombres);
 }
