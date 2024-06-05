@@ -13,8 +13,8 @@ function buscarPacientes() {
             console.log(result);
             debugger;
             //console.ing(result);
-            const pacientes = result;
-            paciente.forEach(item => {
+            const pacientes = parseJSON(result);
+            pacientes.forEach(item => {
                 agregarFilas("#tabla",item);
             });           
         }     
@@ -23,16 +23,16 @@ function buscarPacientes() {
     return; 
 }
 
-function agregarFilas(id) {
+function agregarFilas(id,paciente) {
     const html =
     "<tr>"+
-    "<td>"+Paciente.Nombres+"</td>"+
-    "<td>"+Paciente.Edad+"</td>"+
-    "<td>"+Paciente.Talla+"</td>"+
-    "<td>"+Paciente.Peso+"</td>"+
-    "<td>"+Paciente.Tos+"</td>"+
-    "<td>"+Paciente.Fiebre+"</td>"+
-    "<td>"+Paciente.Disnea+"</td>"+
+    "<td>"+paciente.nombres+"</td>"+
+    "<td>"+paciente.edad+"</td>"+
+    "<td>"+paciente.talla_m+"</td>"+
+    "<td>"+paciente.peso_kg+"</td>"+
+    "<td>"+paciente.sintoma_tos+"</td>"+
+    "<td>"+paciente.sintoma_fiebre+"</td>"+
+    "<td>"+paciente.sintoma_disnea+"</td>"+
     "<td><button type='button'>Editar</button></td>" +
     "</tr>";
     $(id + " tr:last").after(html);
