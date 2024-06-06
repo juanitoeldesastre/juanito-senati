@@ -1,37 +1,51 @@
 function buscarPacientes() {
     const nombre = $("#nombre").val();
     const datos = { nombre };
-    
+
     $.ajax({
         url: "26-ajax-pdo.php",
         type: "post",
         data: datos,
         success: function(result) {
-            console.log("Respuesta del servidor:", result); // Verificar la respuesta del servidor
+            console.log("Respuesta del servidor:", result);
             const pacientes = JSON.parse(result);
-            console.log("Pacientes encontrados:", pacientes); // Verificar los pacientes encontrados
+            console.log("Pacientes encontrados:", pacientes);
+
+            $("#tabla tbody").empty();
 
             if (pacientes.length > 0) {
-                const paciente = pacientes[0];
-                console.log("Paciente seleccionado:", paciente); // Verificar el paciente seleccionado
+                pacientes.forEach(paciente => {
+                    // Convertir valores de síntomas a texto según la base de datos
+                    const tieneTos = paciente.sintoma_tos === '1' ? 'Sí' : 'No';
+                    const tieneFiebre = paciente.sintoma_fiebre === '1' ? 'Sí' : 'No';
+                    const tieneDisnea = paciente.sintoma_disnea === '1' ? 'Sí' : 'No';
 
-                // Llenar los campos en tu tabla o formulario con los datos del paciente
-                $("#nombrePaciente").val(paciente.nombres);
-                $("#edadPaciente").val(paciente.edad);
-                $("#tallaPaciente").val(paciente.talla_m);
-                $("#pesoPaciente").val(paciente.peso_kg);
-                // Otros campos del paciente según tus necesidades
+                    const row = `<tr>
+                        <td>${paciente.nombres}</td>
+                        <td>${paciente.edad}</td>
+                        <td>${paciente.talla_m}</td>
+                        <td>${paciente.peso_kg}</td>
+                        <td>${tieneTos}</td>
+                        <td>${tieneFiebre}</td>
+                        <td>${tieneDisnea}</td>
+                        <td>Acciones</td>
+                    </tr>`;
+                    $("#tabla tbody").append(row);
+                });
             } else {
                 alert("No se encontraron pacientes con ese nombre.");
             }
         },
         error: function(xhr, status, error) {
-            console.error("Error en la solicitud AJAX:", error); // Verificar errores en la solicitud AJAX
+            console.error("Error en la solicitud AJAX:", error);
         }
     });
 }
 
-function actualizar() {
+
+
+
+function guardarCambios() {
     const $nombre = $("#nombre2").val();
    
     let datos ={
