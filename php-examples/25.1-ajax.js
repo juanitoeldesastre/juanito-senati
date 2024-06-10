@@ -1,68 +1,85 @@
+// Función para buscar pacientes en la base de datos
 function buscarPacientes() {
     const $nombre = $("#nombre").val();
-    //alert("Buscando..."+nombre);
-    let datos ={
-        nombre : $nombre
+    let datos = {
+        nombre: $nombre
     };
+
+    // Realiza la petición AJAX para buscar pacientes
     $.ajax({
-        url :"26-ajax-pdo.php",
-        type : "post",
-        data : datos,
-        success : function(result) {
-            debugger;
+        url: "26-ajax-pdo.php",
+        type: "post",
+        data: datos,
+        success: function(result) {
             console.log(result);
-            const pacientes=$.parseJSON(result);
-            pacientes.forEach(item => {
-                agregarFilas("#tabla",item);
-            });
-
+            const pacientes = $.parseJSON(result);
+            // Limpia la tabla antes de agregar nuevas filas
+            $("#tabla tbody").empty();
+            if (pacientes.length > 0) {
+                pacientes.forEach(item => {
+                    agregarFilas("#tabla", item);
+                });
+            } else {
+                alert("No se encontraron pacientes");
+            }
+        },
+        error: function(err) {
+            console.error("Error en la petición AJAX: ", err);
         }
-    })
-
+    });
 
     return;
 }
 
-
-function agregarFilas(id,paciente) {
-    const html=
-    "<tr>"+
-    "<td>"+paciente.nombres+"</td>"+
-    "<td>"+paciente.edad+"</td>"+    
-    "<td>"+paciente.talla_m+"</td>"+
-    "<td>"+paciente.peso_kg+"</td>"+
-    "<td>"+paciente.sintoma_tos+"</td>"+
-    "<td>"+paciente.sintoma_fiebre+"</td>"+
-    "<td>"+paciente.sintoma_disnea+"</td>"+
-    "<td><button type='button' onclick=editar('"+paciente.nombres+"','"+paciente.edad+"');>Editar</button></td>"+
-    "</tr>";
-    $(id+" tr:last").after(html);
+// Función para agregar filas a la tabla con los datos de los pacientes
+function agregarFilas(id, paciente) {
+    const html = `
+    <tr>
+        <td>${paciente.nombres}</td>
+        <td>${paciente.edad}</td>
+        <td>${paciente.talla_m}</td>
+        <td>${paciente.peso_kg}</td>
+        <td>${paciente.sintoma_tos}</td>
+        <td>${paciente.sintoma_fiebre}</td>
+        <td>${paciente.sintoma_disnea}</td>
+        <td><button type="button" class="btn btn-warning" onclick="editar('${paciente.nombres}', '${paciente.edad}');">Editar</button></td>
+    </tr>`;
+    $(id + " tbody").append(html);
 }
 
-function editar(nombres,edad) {
-    $('#exampleModal').modal('show');    
+// Función para mostrar el modal de edición con los datos del paciente
+function editar(nombres, edad) {
+    $('#exampleModal').modal('show');
     $("#nombre2").val(nombres);
 }
 
+// Función para actualizar los datos del paciente
 function actualizar() {
     const $nombre = $("#nombre2").val();
-    
-    let datos ={
-        nombre : $nombre
-    };
-    $.ajax({
-        url :"26.1-update-ajax-pdo.php",
-        type : "post",
-        data : datos,
-        success : function(result) {              
-            alert("Se guardo los datos correctamente de "+result);            
-        }
-    })
 
+    let datos = {
+        nombre: $nombre
+    };
+
+    // Realiza la petición AJAX para actualizar los datos del paciente
+    $.ajax({
+        url: "26.1-update-ajax-pdo.php",
+        type: "post",
+        data: datos,
+        success: function(result) {
+            alert("Se guardaron los datos correctamente de " + result);
+            $('#exampleModal').modal('hide');
+            buscarPacientes(); // Actualiza la lista de pacientes después de la edición
+        },
+        error: function(err) {
+            console.error("Error en la petición AJAX: ", err);
+        }
+    });
 
     return;
 }
 
+// Función para ocultar el modal de edición
 function cancelar() {
-    $('#exampleModal').modal('hide');    
+    $('#exampleModal').modal('hide');
 }
