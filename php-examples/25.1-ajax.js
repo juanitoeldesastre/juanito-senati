@@ -1,53 +1,52 @@
 function buscarPacientes() {
-    const nombre = $("#nombre").val();
-    const datos = { nombre };
-
+    const $nombre = $("#nombre").val();
+    //alert("Buscando..."+nombre);
+    let datos ={
+        nombre : $nombre
+    };
     $.ajax({
-        url: "26-ajax-pdo.php",
-        type: "post",
-        data: datos,
-        success: function(result) {
-            console.log("Respuesta del servidor:", result);
-            const pacientes = JSON.parse(result);
-            console.log("Pacientes encontrados:", pacientes);
+        url :"26-ajax-pdo.php",
+        type : "post",
+        data : datos,
+        success : function(result) {
+            debugger;
+            console.log(result);
+            const pacientes=$.parseJSON(result);
+            pacientes.forEach(item => {
+                agregarFilas("#tabla",item);
+            });
 
-            $("#tabla tbody").empty();
-
-            if (pacientes.length > 0) {
-                pacientes.forEach(paciente => {
-                    // Convertir valores de síntomas a texto según la base de datos
-                    const tieneTos = paciente.sintoma_tos === '1' ? 'Sí' : 'No';
-                    const tieneFiebre = paciente.sintoma_fiebre === '1' ? 'Sí' : 'No';
-                    const tieneDisnea = paciente.sintoma_disnea === '1' ? 'Sí' : 'No';
-
-                    const row = `<tr>
-                        <td>${paciente.nombres}</td>
-                        <td>${paciente.edad}</td>
-                        <td>${paciente.talla_m}</td>
-                        <td>${paciente.peso_kg}</td>
-                        <td>${tieneTos}</td>
-                        <td>${tieneFiebre}</td>
-                        <td>${tieneDisnea}</td>
-                        <td>Acciones</td>
-                    </tr>`;
-                    $("#tabla tbody").append(row);
-                });
-            } else {
-                alert("No se encontraron pacientes con ese nombre.");
-            }
-        },
-        error: function(xhr, status, error) {
-            console.error("Error en la solicitud AJAX:", error);
         }
-    });
+    })
+
+
+    return;
 }
 
 
+function agregarFilas(id,paciente) {
+    const html=
+    "<tr>"+
+    "<td>"+paciente.nombres+"</td>"+
+    "<td>"+paciente.edad+"</td>"+    
+    "<td>"+paciente.talla_m+"</td>"+
+    "<td>"+paciente.peso_kg+"</td>"+
+    "<td>"+paciente.sintoma_tos+"</td>"+
+    "<td>"+paciente.sintoma_fiebre+"</td>"+
+    "<td>"+paciente.sintoma_disnea+"</td>"+
+    "<td><button type='button' onclick=editar('"+paciente.nombres+"','"+paciente.edad+"');>Editar</button></td>"+
+    "</tr>";
+    $(id+" tr:last").after(html);
+}
 
+function editar(nombres,edad) {
+    $('#exampleModal').modal('show');    
+    $("#nombre2").val(nombres);
+}
 
-function guardarCambios() {
+function actualizar() {
     const $nombre = $("#nombre2").val();
-   
+    
     let datos ={
         nombre : $nombre
     };
@@ -59,11 +58,11 @@ function guardarCambios() {
             alert("Se guardo los datos correctamente de "+result);            
         }
     })
- 
- 
+
+
     return;
 }
- 
+
 function cancelar() {
     $('#exampleModal').modal('hide');    
 }
