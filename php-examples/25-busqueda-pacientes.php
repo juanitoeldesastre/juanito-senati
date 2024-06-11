@@ -92,5 +92,45 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="25.1-ajax.js"></script>
+
+    <script>
+        // Función para agregar filas a la tabla con los datos de los pacientes
+        function agregarFilas(id, paciente) {
+            const html = `
+            <tr>
+                <td>${paciente.nombres}</td>
+                <td>${paciente.edad}</td>
+                <td>${paciente.talla_m}</td>
+                <td>${paciente.peso_kg}</td>
+                <td>${paciente.sintoma_tos}</td>
+                <td>${paciente.sintoma_fiebre}</td>
+                <td>${paciente.sintoma_disnea}</td>
+                <td>
+                    <button type="button" class="btn btn-warning" onclick="editar('${paciente.nombres}', '${paciente.edad}');">Editar</button>
+                    <button type="button" class="btn btn-danger" onclick="eliminar('${paciente.id}');">Eliminar</button>
+                </td>
+            </tr>`;
+            $(id + " tbody").append(html);
+        }
+
+        function eliminar(id) {
+    if (confirm("¿Estás seguro de que quieres eliminar este paciente?")) {
+        $.ajax({
+            type: "POST",
+            url: "24-eliminacion-pdo.php",
+            data: { id: id },
+            success: function(response) {
+                alert(response.message);
+                // Recargar la tabla de pacientes después de eliminar uno
+                buscarPacientes();
+            },
+            error: function(xhr, status, error) {
+                alert("Error al eliminar el paciente: " + error);
+            }
+        });
+      }
+    }
+
+    </script>
 </body>
 </html>

@@ -42,10 +42,41 @@ function agregarFilas(id, paciente) {
         <td>${paciente.sintoma_tos}</td>
         <td>${paciente.sintoma_fiebre}</td>
         <td>${paciente.sintoma_disnea}</td>
-        <td><button type="button" class="btn btn-warning" onclick="editar('${paciente.nombres}', '${paciente.edad}');">Editar</button></td>
+        <td>
+            <button type="button" class="btn btn-warning" onclick="editar('${paciente.nombres}', '${paciente.edad}');">Editar</button>
+            <button type="button" class="btn btn-danger" onclick="eliminarPaciente('${paciente.id}');">Eliminar</button>
+        </td>
     </tr>`;
     $(id + " tbody").append(html);
 }
+
+
+// Función para eliminar un paciente
+function eliminarPaciente(id) {
+    // Confirmar antes de eliminar
+    if (confirm("¿Estás seguro de que deseas eliminar este paciente?")) {
+        let datos = {
+            id: id
+        };
+
+        // Realiza la petición AJAX para eliminar al paciente
+        $.ajax({
+            url: "24.1-eliminacion.ajax.php", // Reemplaza con la ruta correcta
+            type: "post",
+            data: datos,
+            success: function(result) {
+                alert("Paciente eliminado correctamente");
+                buscarPacientes(); // Actualiza la lista de pacientes después de la eliminación
+            },
+            error: function(err) {
+                console.error("Error en la petición AJAX para eliminar paciente: ", err);
+            }
+        });
+    }
+}
+
+
+
 
 // Función para mostrar el modal de edición con los datos del paciente
 function editar(nombres, edad) {
