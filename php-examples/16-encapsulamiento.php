@@ -1,25 +1,31 @@
-<?php
+<?php 
     class Instrumento {
-     
-        public $nomre;
+        public $nombre;
         public $categoria;
         private $modelos;
-        private $tieneCuerdas;
+        private $tieneCuerdas=false;
 
-        public function ___construct($_nombre,$_categoria) {
+        public function __construct($_nombre,$_categoria) {
             $this->nombre = $_nombre;
             $this->categoria = $_categoria;
         }
- 
+
         public function setearModelos($_modelos) {
             $this->modelos = $_modelos;
         }
 
         public function mostrarModelos() {
-            return $modelos;
+            return $this->modelos;
         }
 
+        private function existeCuerdas() {
+            if($this->tieneCuerdas)
+                return "Si";
+            else 
+                return "No";
+        }
+
+        public function validarCuerdas() {
+            return $this->existeCuerdas();
+        }
     }
- 
- 
- ?>
