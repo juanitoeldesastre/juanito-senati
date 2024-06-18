@@ -1,11 +1,28 @@
 <?php
 
-//realizar un programa que me permita imprimir 
-//los tres colores del semaforo para el auto
-//siendo el siguiente enunciado
-//Si el semaforo esta en rojo debe decir ¡pare!
-//Si el semaforo esta en amarillo debe decir ¡espera!
-//Si el semaforo esta en verde debe decir ¡Avanza!
-//para ello el programa debe pedir al usuario que ingrese
-//un numero o una letra para luego evaluar que color 
-//esta eligiendo .
+function obtenerColorSemaforo($entrada) {
+    switch (strtolower(trim($entrada))) {
+        case '1':
+        case 'r':
+        case 'rojo':
+            return "\033[31m¡Pare!\033[0m"; // Rojo
+        case '2':
+        case 'a':
+        case 'amarillo':
+            return "\033[33m¡Espera!\033[0m"; // Amarillo
+        case '3':
+        case 'v':
+        case 'verde':
+            return "\033[32m¡Avanza!\033[0m"; // Verde
+        default:
+            return "Entrada no válida. Por favor, ingrese un número (1, 2, 3) o letras correspondientes al color del semáforo.";
+    }
+}
+
+echo "Ingrese un número (1: Rojo, 2: Amarillo, 3: Verde) para el color del semáforo: ";
+$entrada = trim(fgets(STDIN));
+
+$mensaje = obtenerColorSemaforo($entrada);
+echo $mensaje . "\n";
+
+?>

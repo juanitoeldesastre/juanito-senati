@@ -25,10 +25,10 @@ else {
 //caso 3 , cuenta bancaria
 $saldo = 0;
     if(!($saldo > 0)) {//$saldo <= 0
-        echo "\nTiene saldo insuficiente";
+        echo "\nTienes saldo insuficiente";
     }
     else {
-        echo "\nTiene saldo";
+        echo "\nTienes saldo";
     }
 
 ?>
