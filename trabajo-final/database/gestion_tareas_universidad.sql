@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 20-06-2024 a las 22:25:12
+-- Tiempo de generación: 20-06-2024 a las 23:52:31
 -- Versión del servidor: 8.0.36
 -- Versión de PHP: 8.3.8
 
@@ -125,6 +125,29 @@ INSERT INTO `universidades` (`id`, `nombre`) VALUES
 (1, 'Senati_tacna'),
 (2, 'UJBG');
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `id` int NOT NULL,
+  `usuario` varchar(50) NOT NULL,
+  `contrasena` varchar(255) NOT NULL,
+  `rol` enum('admin','estudiante') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `usuario`, `contrasena`, `rol`) VALUES
+(1, 'admin', 'admin', 'admin'),
+(2, 'estudiante1', 'password1', 'estudiante'),
+(3, 'estudiante2', 'password2', 'estudiante'),
+(4, 'root', 'root', 'admin');
+
 --
 -- Índices para tablas volcadas
 --
@@ -165,6 +188,13 @@ ALTER TABLE `universidades`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `usuario` (`usuario`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -197,6 +227,12 @@ ALTER TABLE `tareas`
 --
 ALTER TABLE `universidades`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restricciones para tablas volcadas
