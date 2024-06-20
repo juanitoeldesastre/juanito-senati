@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+// Verificar si el usuario no está logueado, redirigir al formulario de inicio de sesión
+if (!isset($_SESSION['usuario'])) {
+    header("Location: login.php");
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -73,21 +83,22 @@
                 <li><a href="carreras.php">Gestión de Carreras</a></li>
                 <li><a href="estudiantes.php">Gestión de Estudiantes</a></li>
                 <li><a href="importar_pdf.php">Importar Archivos PDF</a></li>
+                <li><a href="perfil.php">Ver Perfil</a></li> <!-- Nueva opción -->
             </ul>
         </nav>
-        <div class="panel">
-            <div class="panel-item">
-                <h2>Total de Tareas</h2>
-                <p>100</p> <!-- Aquí puedes mostrar el número total de tareas -->
-            </div>
-            <div class="panel-item">
-                <h2>Tareas Completadas</h2>
-                <p>75</p> <!-- Aquí puedes mostrar el número de tareas completadas -->
-            </div>
-            <div class="panel-item">
-                <h2>Tareas Pendientes</h2>
-                <p>25</p> <!-- Aquí puedes mostrar el número de tareas pendientes -->
-            </div>
+    </div>
+    <div class="panel">
+        <div class="panel-item">
+            <h2>Total de Tareas</h2>
+            <p>100</p> <!-- Aquí puedes mostrar el número total de tareas -->
+        </div>
+        <div class="panel-item">
+            <h2>Tareas Completadas</h2>
+            <p>75</p> <!-- Aquí puedes mostrar el número de tareas completadas -->
+        </div>
+        <div class="panel-item">
+            <h2>Tareas Pendientes</h2>
+            <p>25</p> <!-- Aquí puedes mostrar el número de tareas pendientes -->
         </div>
     </div>
 </body>
