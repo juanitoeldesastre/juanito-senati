@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id'])) {
     if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
         $nombre_archivo = $_FILES['imagen']['name'];
         $ruta_temporal = $_FILES['imagen']['tmp_name'];
-        $ruta_destino = 'uploads/' . $nombre_archivo;
+        $ruta_destino = 'uploads/' . basename($nombre_archivo); // Obtener solo el nombre del archivo
 
         if (move_uploaded_file($ruta_temporal, $ruta_destino)) {
             // Actualizar datos del estudiante con la nueva imagen
