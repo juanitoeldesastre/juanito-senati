@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -39,10 +38,9 @@
                           </td>";
                     echo "</tr>";
                 }
-    
                 $conn->close();
             ?>
         </tbody>
     </table>
-    </body>
-    </html>    
+</body>
+</html>
