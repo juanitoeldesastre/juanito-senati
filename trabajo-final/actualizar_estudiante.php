@@ -8,15 +8,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id'])) {
     $universidad_id = $_POST['universidad'];
     $carrera_id = $_POST['carrera'];
 
-    // Procesar la imagen del estudiante si se ha subido una nueva
-    if ($_FILES['foto']['error'] === UPLOAD_ERR_OK) {
-        $nombre_archivo = $_FILES['foto']['name'];
-        $ruta_temporal = $_FILES['foto']['tmp_name'];
+    // Verificar si se subió una nueva imagen
+    if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
+        $nombre_archivo = $_FILES['imagen']['name'];
+        $ruta_temporal = $_FILES['imagen']['tmp_name'];
         $ruta_destino = 'uploads/' . $nombre_archivo;
 
         if (move_uploaded_file($ruta_temporal, $ruta_destino)) {
             // Actualizar datos del estudiante con la nueva imagen
-            $query = "UPDATE estudiantes SET nombre='$nombre', dni='$dni', universidad_id='$universidad_id', carrera_id='$carrera_id', foto='$ruta_destino' WHERE id='$id'";
+            $query = "UPDATE estudiantes SET nombre='$nombre', dni='$dni', universidad_id='$universidad_id', carrera_id='$carrera_id', imagen='$ruta_destino' WHERE id='$id'";
         } else {
             echo "Error al subir la imagen.";
             exit;
