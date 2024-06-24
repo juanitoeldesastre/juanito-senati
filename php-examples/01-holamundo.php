@@ -1,4 +1,4 @@
-<title>Hola Mundo</title>
+<title>Hola mundo</title>
     <style> 
         :root {
             color-scheme: light dark;
@@ -13,7 +13,7 @@
 </head>
 <body>
     <h1>
-        <?php echo "Hola Mundo"; ?> 
+        <?php echo "Hola mundo"; ?> 
     </h1>
 </body>
 
