@@ -1,5 +1,5 @@
+<link rel="icon" href="php.ico"> 
 <title>operaciones</title>
-<link rel="icon" href="https://www.php.net/images/meta-image.png" type="image/x-icon">
 
 <?php
 

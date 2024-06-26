@@ -1,3 +1,4 @@
+<link rel="icon" href="php.ico"> 
 <title>Hola mundo</title>
     <style> 
         :root {
