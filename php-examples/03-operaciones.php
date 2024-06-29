@@ -39,7 +39,7 @@
             color: #666;
         }
         .result {
-            font-size: 18px;
+            font-size: 20px;
             margin-top: 10px;
         }
     </style>

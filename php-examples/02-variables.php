@@ -13,7 +13,7 @@ body {
 }
 
 h1 {
-    font-size: 1.5em;
+    font-size: 20px;
 }
 </style>
 

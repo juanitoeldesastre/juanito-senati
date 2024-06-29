@@ -10,6 +10,10 @@
             place-content: center;
             font-family: Arial, sans-serif;
         }
+
+        h1 {
+            font-size: 20px;
+        }   
     </style>
 <body>
     <h1>
