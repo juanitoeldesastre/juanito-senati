@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejemplos de Operaciones Matemáticas</title>
+    <title>Matemáticas</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -15,7 +15,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            overflow: hidden; /* Para eliminar la barra de desplazamiento */
+            overflow: hidden; 
         }
         .container {
             max-width: 800px;
