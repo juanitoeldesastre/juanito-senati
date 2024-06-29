@@ -3,158 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="php.ico">
-    <title>Operaciones</title>
+    <title>Ejemplos de Operaciones Matemáticas</title>
     <style>
         body {
             font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
             background-color: #f0f0f0;
-            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden; /* Para eliminar la barra de desplazamiento */
         }
         .container {
             max-width: 800px;
-            margin: 50px auto;
-            padding: 20px;
             background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: auto; /* Permite el desplazamiento dentro del contenedor si es necesario */
+            max-height: 100%; /* Asegura que el contenedor no se extienda más allá de la ventana */
         }
         h1 {
             text-align: center;
-            font-size: 2em;
-            color: #0056b3;
+            color: #333;
         }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
+        .section {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 20px;
         }
-        table, th, td {
-            border: 1px solid #ccc;
+        .section h2 {
+            color: #666;
         }
-        th, td {
-            padding: 12px;
-            text-align: left;
-        }
-        th {
-            background-color: #0056b3;
-            color: #fff;
-        }
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
+        .result {
+            font-size: 18px;
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Resultados de las Operaciones</h1>
-        <?php
-            $numero1 = 10;
-            $numero2 = 20;
-
+        
+        <div class="section">
+            <?php
+            // Generación de números aleatorios
+            $num1 = rand(1, 100);
+            $num2 = rand(1, 100);
+            
             // Operaciones básicas
-            $suma = $numero1 + $numero2;
-            $resta = $numero1 - $numero2;
-            $multiplicacion = $numero1 * $numero2;
-            $division = $numero1 / $numero2;
-            $modulo = $numero1 % $numero2;
-            $potencia = pow($numero1, $numero2);
-
-            // Operaciones matemáticas adicionales
-            $raiz_cuadrada1 = sqrt($numero1);
-            $raiz_cuadrada2 = sqrt($numero2);
-            $logaritmo1 = log($numero1); // Logaritmo natural
-            $logaritmo2 = log($numero2);
-            $logaritmo_base10_1 = log10($numero1); // Logaritmo base 10
-            $logaritmo_base10_2 = log10($numero2);
-            $seno1 = sin($numero1);
-            $seno2 = sin($numero2);
-            $coseno1 = cos($numero1);
-            $coseno2 = cos($numero2);
-            $tangente1 = tan($numero1);
-            $tangente2 = tan($numero2);
-
-            function format_number($number) {
-                return number_format($number, 2);
-            }
-        ?>
-        <table>
-            <tr>
-                <th>Operación</th>
-                <th>Resultado</th>
-            </tr>
-            <tr>
-                <td>Suma</td>
-                <td><?php echo htmlspecialchars(format_number($suma)); ?></td>
-            </tr>
-            <tr>
-                <td>Resta</td>
-                <td><?php echo htmlspecialchars(format_number($resta)); ?></td>
-            </tr>
-            <tr>
-                <td>Multiplicación</td>
-                <td><?php echo htmlspecialchars(format_number($multiplicacion)); ?></td>
-            </tr>
-            <tr>
-                <td>División</td>
-                <td><?php echo htmlspecialchars(format_number($division)); ?></td>
-            </tr>
-            <tr>
-                <td>Módulo</td>
-                <td><?php echo htmlspecialchars(format_number($modulo)); ?></td>
-            </tr>
-            <tr>
-                <td>Potencia</td>
-                <td><?php echo htmlspecialchars(format_number($potencia)); ?></td>
-            </tr>
-            <tr>
-                <td>Raíz Cuadrada de <?php echo htmlspecialchars(format_number($numero1)); ?></td>
-                <td><?php echo htmlspecialchars(format_number($raiz_cuadrada1)); ?></td>
-            </tr>
-            <tr>
-                <td>Raíz Cuadrada de <?php echo htmlspecialchars(format_number($numero2)); ?></td>
-                <td><?php echo htmlspecialchars(format_number($raiz_cuadrada2)); ?></td>
-            </tr>
-            <tr>
-                <td>Logaritmo Natural de <?php echo htmlspecialchars(format_number($numero1)); ?></td>
-                <td><?php echo htmlspecialchars(format_number($logaritmo1)); ?></td>
-            </tr>
-            <tr>
-                <td>Logaritmo Natural de <?php echo htmlspecialchars(format_number($numero2)); ?></td>
-                <td><?php echo htmlspecialchars(format_number($logaritmo2)); ?></td>
-            </tr>
-            <tr>
-                <td>Logaritmo Base 10 de <?php echo htmlspecialchars(format_number($numero1)); ?></td>
-                <td><?php echo htmlspecialchars(format_number($logaritmo_base10_1)); ?></td>
-            </tr>
-            <tr>
-                <td>Logaritmo Base 10 de <?php echo htmlspecialchars(format_number($numero2)); ?></td>
-                <td><?php echo htmlspecialchars(format_number($logaritmo_base10_2)); ?></td>
-            </tr>
-            <tr>
-                <td>Seno de <?php echo htmlspecialchars(format_number($numero1)); ?></td>
-                <td><?php echo htmlspecialchars(format_number($seno1)); ?></td>
-            </tr>
-            <tr>
-                <td>Seno de <?php echo htmlspecialchars(format_number($numero2)); ?></td>
-                <td><?php echo htmlspecialchars(format_number($seno2)); ?></td>
-            </tr>
-            <tr>
-                <td>Coseno de <?php echo htmlspecialchars(format_number($numero1)); ?></td>
-                <td><?php echo htmlspecialchars(format_number($coseno1)); ?></td>
-            </tr>
-            <tr>
-                <td>Coseno de <?php echo htmlspecialchars(format_number($numero2)); ?></td>
-                <td><?php echo htmlspecialchars(format_number($coseno2)); ?></td>
-            </tr>
-            <tr>
-                <td>Tangente de <?php echo htmlspecialchars(format_number($numero1)); ?></td>
-                <td><?php echo htmlspecialchars(format_number($tangente1)); ?></td>
-            </tr>
-            <tr>
-                <td>Tangente de <?php echo htmlspecialchars(format_number($numero2)); ?></td>
-                <td><?php echo htmlspecialchars(format_number($tangente2)); ?></td>
-            </tr>
-        </table>
+            $suma = $num1 + $num2;
+            $resta = $num1 - $num2;
+            $multiplicacion = $num1 * $num2;
+            $division = $num1 / $num2;
+            ?>
+            <p class="result"><?php echo "$num1 + $num2 = $suma"; ?></p>
+            <p class="result"><?php echo "$num1 - $num2 = $resta"; ?></p>
+            <p class="result"><?php echo "$num1 * $num2 = $multiplicacion"; ?></p>
+            <p class="result"><?php echo "$num1 / $num2 = $division"; ?></p>
+        </div>
+        
+        <div class="section">
+            <?php
+            // Generación de números aleatorios
+            $num3 = rand(1, 10); // base para potenciación
+            $num4 = rand(1, 5);  // exponente para potenciación
+            
+            // Operaciones avanzadas
+            $potencia = pow($num3, $num4);
+            $raiz_cuadrada = sqrt($num3);
+            $logaritmo = log($num3);
+            ?>
+            <p class="result"><?php echo "$num3 ^ $num4 = $potencia"; ?></p>
+            <p class="result"><?php echo "Raíz cuadrada de $num3 = $raiz_cuadrada"; ?></p>
+            <p class="result"><?php echo "Logaritmo natural de $num3 = $logaritmo"; ?></p>
+        </div>
+        
+        <div class="section">
+            <?php
+            // Generación de ángulo aleatorio en radianes
+            $angulo = deg2rad(rand(0, 360));
+            
+            // Funciones trigonométricas
+            $seno = sin($angulo);
+            $coseno = cos($angulo);
+            $tangente = tan($angulo);
+            ?>
+            <p class="result"><?php echo "Sin($angulo) = $seno"; ?></p>
+            <p class="result"><?php echo "Cos($angulo) = $coseno"; ?></p>
+            <p class="result"><?php echo "Tan($angulo) = $tangente"; ?></p>
+        </div>
     </div>
 </body>
 </html>
