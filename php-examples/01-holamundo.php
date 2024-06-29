@@ -11,7 +11,6 @@
             font-family: Arial, sans-serif;
         }
     </style>
-</head>
 <body>
     <h1>
         <?php echo "Hola mundo"; ?> 
