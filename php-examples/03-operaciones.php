@@ -10,8 +10,8 @@
             font-family: Arial, sans-serif;
             line-height: 1.6;
             margin: 0;
-            background-color: #2c3e50; /* Color verdoso de pizarra */
-            color: #ecf0f1; /* Color claro para el texto */
+            background-color: #2c3e50; 
+            color: #ecf0f1; 
             display: flex;
             justify-content: center;
             align-items: center;
@@ -20,12 +20,12 @@
         }
         .container {
             max-width: 800px;
-            background-color: #34495e; /* Color más oscuro para el contenedor */
+            background-color: #34495e; 
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             overflow: auto; /* Permite el desplazamiento dentro del contenedor si es necesario */
-            max-height: 100%; /* Asegura que el contenedor no se extienda más allá de la ventana */
+            max-height: 100%; 
         }
         h1 {
             text-align: center;
@@ -55,7 +55,6 @@
             $num1 = rand(1, 100);
             $num2 = rand(1, 100);
             
-            // Operaciones básicas
             $suma = $num1 + $num2;
             $resta = $num1 - $num2;
             $multiplicacion = $num1 * $num2;
@@ -70,10 +69,9 @@
         <div class="section">
             <?php
             // Generación de números aleatorios
-            $num3 = rand(1, 10); // base para potenciación
-            $num4 = rand(1, 5);  // exponente para potenciación
+            $num3 = rand(1, 10); 
+            $num4 = rand(1, 5);  
             
-            // Operaciones avanzadas
             $potencia = pow($num3, $num4);
             $raiz_cuadrada = sqrt($num3);
             $logaritmo = log($num3);
