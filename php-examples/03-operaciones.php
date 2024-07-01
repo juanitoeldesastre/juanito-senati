@@ -3,23 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="php.ico">
     <title>Matemáticas</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
             margin: 0;
-            padding: 20px;
-            background-color: #f0f0f0;
+            background-color: #2c3e50; /* Color verdoso de pizarra */
+            color: #ecf0f1; /* Color claro para el texto */
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            overflow: hidden; 
+            overflow: hidden;
         }
         .container {
             max-width: 800px;
-            background-color: #fff;
+            background-color: #34495e; /* Color más oscuro para el contenedor */
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -28,19 +29,20 @@
         }
         h1 {
             text-align: center;
-            color: #333;
+            color: #ecf0f1;
         }
         .section {
             margin-bottom: 20px;
-            border-bottom: 1px solid #ccc;
+            border-bottom: 1px solid #7f8c8d;
             padding-bottom: 20px;
         }
         .section h2 {
-            color: #666;
+            color: #bdc3c7;
         }
         .result {
             font-size: 20px;
             margin-top: 10px;
+            color: #ecf0f1;
         }
     </style>
 </head>
