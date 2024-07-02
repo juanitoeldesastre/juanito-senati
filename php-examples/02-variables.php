@@ -22,11 +22,12 @@ h1 {
     $nombres = "Juan Piero";
     $apellidos = "Vincha Loza";
     $edad = 18; 
+    $estatura = 1.66;
     $curso = "Backend Developer Web";
     $semestre = "tercer semestre";
     
     $nuevaedad = $edad + 1;
-
+    
     // Crear mensaje
     $mensaje = "Hola, $nombres $apellidos. Tienes $nuevaedad años, estás en el curso de $curso y vas en el $semestre.";
     ?>
