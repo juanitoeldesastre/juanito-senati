@@ -1,12 +1,12 @@
 <link rel="icon" href="php.ico">
-    <title>Variables</title>
+<title>Variables</title>
 <style>
 :root {
     color-scheme: light dark;
 }
 
 body {
-    display: grid;
+    padding: 100px;
     place-content: center;
     font-family: Arial, sans-serif;
     text-align: center;
@@ -21,15 +21,24 @@ h1 {
 <?php
     $nombres = "Juan Piero";
     $apellidos = "Vincha Loza";
-    $edad = 18; 
-    $estatura = 1.66;
-    $curso = "Backend Developer Web";
+    $edad = 20;
+    $estatura = 1.80;
+    $dinero = 200;
+    $carrera = "Ingeniería de Software";
     $semestre = "tercer semestre";
+    $intereses = array("romance", "control mental", "meditación", "creepypastas");
+    $viudo = false;
+    $casado = true;
     
-    $nuevaedad = $edad + 1;
+    $mensaje = "Hola, soy $nombres $apellidos. Tengo $edad años, cuento con \$1 dólar y mido $estatura metros. Estoy cursando $carrera y voy en el $semestre. Mis intereses incluyen " . implode(", ", $intereses) . ".";
     
-    // Crear mensaje
-    $mensaje = "Hola, $nombres $apellidos. Tienes $nuevaedad años, estás en el curso de $curso y vas en el $semestre.";
-    ?>
+    if ($viudo) {
+        $mensaje .= " Estaba casado pipipi 😭.";
+    } elseif ($casado) {
+        $mensaje .= " Estoy casado 😁.";
+    } else {
+        $mensaje .= " Estoy solin solito 😌.";
+    } 
+?>
     <h1><?= $mensaje; ?></h1>
 </body>
